@@ -22,6 +22,7 @@ from mypy.types import (
     Overloaded,
     TypeVarLikeType,
     TypeVarType,
+    TypeVarId,
     Instance,
     UnionType,
     UninhabitedType,
@@ -464,7 +465,7 @@ def takes_callable_and_args_callback(
                     TypeVarType(
                         "__T{}".format(arg_idx),
                         "__T{}".format(arg_idx),
-                        -len(fn_type.variables) - arg_idx - 1,
+                        TypeVarId(-len(fn_type.variables) - arg_idx - 1),
                         [],
                         ctx.api.named_generic_type("builtins.object", []),
                         line=ctx.context.line,
@@ -477,7 +478,7 @@ def takes_callable_and_args_callback(
                     TypeVarType(
                         "__T{}".format(arg_idx),
                         "__T{}".format(arg_idx),
-                        -len(fn_type.variables) - arg_idx - 1,
+                        TypeVarId(-len(fn_type.variables) - arg_idx - 1),
                         [],
                         ctx.api.named_generic_type("builtins.object", []),
                         line=ctx.context.line,
